@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang='en'>
+
+<head>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width' />
+    <title>Goat UI Component</title>
+
+    <!-- include your custom theme variable values, view variable names at https://cdn.jsdelivr.net/npm/@goatui/components@2.0.0-0/dist/goatui/assets/styles/theme.css -->
+    <!--link rel="stylesheet" href="/custom-theme.css"></link-->
+    <script type='module'
+        src='https://cdn.jsdelivr.net/npm/@goatui/components@2.0.0-0/dist/goatui/goatui.esm.js'></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital@0;1&family=IBM+Plex+Sans+Condensed:ital@0;1&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Serif:ital@0;1&display=swap');
+
+        :root {
+            --font-family-base: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <goat-button size='lg' color='primary'>Click me</goat-button>
+    <goat-date-picker></goat-date-picker>        
+
+    <goat-calendar id="week-calendar" view="week" style="height: 800px"></goat-calendar>
+    <script>
+        const $weekCalendar = document.getElementById('week-calendar');
+    
+        const todayStartOfDayWeek = new Date();
+        todayStartOfDayWeek.setHours(0, 0, 0, 0);
+    
+        function addDays(date, days) {
+            var result = new Date(date);
+            result.setDate(result.getDate() + days);
+            return result;
+        }
+    
+        function addHours(date, hours) {
+            var result = new Date(date);
+            result.setHours(result.getHours() + hours);
+            return result;
+        }
+    
+        $weekCalendar.events = [{
+                start: addHours(todayStartOfDayWeek, 2),
+                end: addHours(todayStartOfDayWeek, 4),
+                title: 'Event 1',
+            },
+            {
+                start: addHours(todayStartOfDayWeek, 3),
+                end: addHours(todayStartOfDayWeek, 7),
+                title: 'Event 2',
+                color: 'red'
+            },
+            {
+                start: addHours(todayStartOfDayWeek, 5),
+                end: addHours(todayStartOfDayWeek, 7),
+                title: 'Event 3',
+            },
+            {
+                start: addHours(todayStartOfDayWeek, 9),
+                end: addHours(todayStartOfDayWeek, 10.5),
+                title: 'Event 4',
+            },
+            {
+                start: addHours(addDays(todayStartOfDayWeek, 1), 9),
+                end: addHours(addDays(todayStartOfDayWeek, 2), 10.5),
+                title: 'Event 5',
+            },
+            {
+                start: addHours(addDays(todayStartOfDayWeek, -5), 9),
+                end: addHours(addDays(todayStartOfDayWeek, -1), 10.5),
+                title: 'Event 6',
+            },
+            {
+                start: addHours(addDays(todayStartOfDayWeek, -2), 9),
+                end: addHours(addDays(todayStartOfDayWeek, -1), 10.5),
+                title: 'Event 7',
+            },
+        ];
+    
+        // Events
+        $weekCalendar.addEventListener('goat-calendar--event-click', function(evt) {
+            myConsole.log(JSON.stringify(evt.detail, null, 4));
+        });
+    </script>    
+
+</body>
+
+</html>

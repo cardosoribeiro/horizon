@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Lit and Polymer in Vanilla JS</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.6.0/webcomponents-bundle.js"></script>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+
+    <my-lit-component name="World"></my-lit-component>
+
+    <my-polymer-component name="Universe"></my-polymer-component>
+
+    <script type="module"> // Important: Use type="module" for Lit
+
+        // Lit Component
+        import { LitElement, html, css } from 'https://cdn.skypack.dev/lit@2';
+
+        class MyLitComponent extends LitElement {
+            static styles = css`
+.container {
+    background-color: lightgreen;
+    padding: 10px;
+}
+`;
+
+            static properties = {
+                name: { type: String }
+            };
+
+            render() {
+                return html`
+<div class="container">
+    Hello, ${this.name}! (Lit)
+</div>
+`;
+            }
+        }
+
+        customElements.define('my-lit-component', MyLitComponent);
+
+
+
+        // Polymer Component (No changes needed from previous example)
+        class MyPolymerComponent extends HTMLElement {
+            constructor() {
+                super();
+                const shadow = this.attachShadow({ mode: 'open' });
+
+                const style = document.createElement('style');
+                style.textContent = `
+/* Component-specific styles */
+:host { display: block; } /* Styles the component itself */
+.container {
+    background-color: lightblue;
+    padding: 10px;
+}
+p {
+    color: darkblue;
+}
+`;
+
+                const container = document.createElement('div');
+                container.classList.add('container');
+                const message = document.createElement('p');
+                message.textContent = "Hello from my Polymer component!";
+
+                shadow.appendChild(style); // Add styles to Shadow DOM
+                shadow.appendChild(container);
+                container.appendChild(message);
+
+                const myName = this.getAttribute('name');
+                if (myName) {
+                    const nameParagraph = document.createElement('p');
+                    nameParagraph.textContent = `My name is ${myName}`;
+                    container.appendChild(nameParagraph);
+                }
+            }
+
+            static get observedAttributes() {
+                return ['name']; // List of attributes to observe
+            }
+
+            attributeChangedCallback(name, oldValue, newValue) {
+                if (name === 'name') {
+                    const nameParagraph = this.shadowRoot.querySelector('p:nth-child(2)'); // Select the second <p> tag
+                    if (nameParagraph) {
+                        nameParagraph.textContent = `My name is ${newValue}`;
+                    }
+                }
+            }
+        }
+
+        customElements.define('my-polymer-component', MyPolymerComponent);
+
+    </script>
+
+</body>
+
+</html>
