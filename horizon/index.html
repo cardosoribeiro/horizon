@@ -22,19 +22,39 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <style> 
+  <style>
     .title-font {
       font-family: "Rajdhani", serif;
       font-weight: 300;
       font-style: normal;
     }
   </style>
+
+  <!-- Adobe Spectrum -->
+  <script src="https://jspm.dev/@spectrum-web-components/bundle/elements.js" type="module" async></script>
 </head>
 
 <body>
   <div id="canvas-container"></div>
   <div id="layout">
-    <span class="title-font">Horizon</span>
+    <span id="title" class="title-font">Horizon</span>
+    <sp-theme scale="large" color="dark">
+      <sp-action-menu id="menu" size="m">
+        <span slot="label">Beyond the Horizon</span>
+        <sp-menu-item>
+          Home
+        </sp-menu-item>
+        <sp-menu-item>
+          About
+        </sp-menu-item>
+        <sp-menu-item>
+          Contact Us
+        </sp-menu-item>
+        <sp-menu-item>
+          What is a World Wide Web?
+        </sp-menu-item>
+      </sp-action-menu>
+    </sp-theme>
   </div>
 </body>
 
