@@ -6,42 +6,32 @@
   <!-- JQuery -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-  <!-- User defined -->
-  <script src="./src/index.js" defer></script>
-  <script src="./src/canvas/p5-client.js" defer></script>
-
   <!-- P5.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.js"></script>
-  <style>
-    #canvas-container {
-      display: flex;
-      /* Horizontally center content */
-      justify-content: center;      
-      /* Vertically center content */
-      align-items: center;
-      /* Make container full viewport height (adjust as needed) */
-      height: 100vh;      
-      border: 1px solid red;
-    }
 
-    #p5-canvas {
-      /* Prevents inline spacing issues */
-      display: block;      
-      border: 1px solid blue;
+  <!-- User defined - Background -->
+  <script src="./src/canvas/p5-client.js" defer></script>
+  <link rel="stylesheet" href="./src/styles/p5-client.css">
+
+  <!-- User defined - General -->
+  <script src="./src/index.js" defer></script>
+  <link rel="stylesheet" href="./src/styles/layout.css">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Yomogi&display=swap" rel="stylesheet">
+  <style>
+    .yomogi-style-text {
+      font-family: 'Yomogi', sans-serif;
     }
-  </style >
+  </style>
 </head>
 
 <body>
   <div id="canvas-container"></div>
-  <div id="my-box"></div>
-  <div id="my-test"></div>
-  <div id="my-hello"></div>
-  <div class="class-selector"></div>
-  <div class="class-selector"></div>
-  <div class="class-selector"></div>
-  <input id="my-button" type="button" value="Click Me"></input>
-  <p></p>
+  <div id="layout">
+    <h1 class="yomogi-style-text">Horizon</h1>
+  </div>
 </body>
 
 </html>

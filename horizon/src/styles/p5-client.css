@@ -1,0 +1,16 @@
+#canvas-container {
+    display: flex;
+    /* Horizontally center content */
+    justify-content: center;
+    /* Vertically center content */
+    align-items: center;
+    /* Make container full viewport height (adjust as needed) */
+    height: 100vh;
+    /* Value from 0 (fully transparent) to 1 (fully opaque) */
+    opacity: 0.9;
+}
+
+#p5-canvas {
+    /* Prevents inline spacing issues */
+    display: block;
+}

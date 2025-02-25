@@ -1,63 +1,62 @@
-/// GOAL: Let's do a Paralax like for the background of Horizon
-/// How do it, look this example of
+/// GOAL: Let's use this as Background of Horizon
+/// How do it? look this example of
 /// By Greg Benedis-Grab, Layla Quiñones
 /// Example of use of P5 library
 
-// My canvas
 let canvas;
-
-//variables for color change
-let redVal = 0;
+let pageWidth;
+let pageHeight;
+let redVal = 20;
 let greenVal = 0;
-
-//variable for sun position
-let sunHeight = 600; //stopping point below horizon
+let sunHeight = 600;
 
 function setup() {
-    canvas = createCanvas(600, 400);
-    canvas.elt.id = 'p5-canvas'; // Set the ID on the canvas element
-    canvas.parent('canvas-container'); // Add canvas to the div
-
+    pageWidth = $("#canvas-container").width() - 10; // Get width *after* DOM is ready
+    pageHeight = $("#canvas-container").height() - 50; // Get height *after* DOM is ready
+    
+    canvas = createCanvas(pageWidth, pageHeight);
+    canvas.elt.id = 'p5-canvas';
+    canvas.parent('canvas-container');
     noStroke();
 }
 
 function draw() {
-    //fill background with color based on custom variable values
     background(redVal, greenVal, 0);
 
-    //sun
+    // Sun
     fill(255, 135, 5, 60);
     circle(300, sunHeight, 180);
     fill(255, 100, 0, 100);
     circle(300, sunHeight, 140);
 
-    //mountains
+    // Mountains (more mountains, at the bottom)
+    const mountainBase = pageHeight; // Base of the mountains (bottom of canvas)
+
+    // Mountain Range 1 (left side)
     fill(110, 50, 18);
-    triangle(200, 400, 520, 253, 800, 400);
+    triangle(0, mountainBase, pageWidth * 0.25, mountainBase - 150, pageWidth * 0.5, mountainBase); // Adjusted x positions
     fill(110, 95, 20);
-    triangle(200, 400, 520, 253, 350, 400);
+    triangle(0, mountainBase, pageWidth * 0.25, mountainBase - 150, pageWidth * 0.125, mountainBase); // Adjusted x positions
 
+    // Mountain Range 2 (center)
     fill(150, 75, 0);
-    triangle(-100, 400, 150, 200, 400, 400);
+    triangle(pageWidth * 0.25, mountainBase, pageWidth * 0.5, mountainBase - 200, pageWidth * 0.75, mountainBase); // Adjusted x positions
     fill(100, 50, 12);
-    triangle(-100, 400, 150, 200, 0, 400);
+    triangle(pageWidth * 0.25, mountainBase, pageWidth * 0.5, mountainBase - 200, pageWidth * 0.375, mountainBase); // Adjusted x positions
 
+    // Mountain Range 3 (right side)
     fill(150, 100, 0);
-    triangle(200, 400, 450, 250, 800, 400);
+    triangle(pageWidth * 0.5, mountainBase, pageWidth * 0.75, mountainBase - 175, pageWidth, mountainBase); // Adjusted x positions
     fill(120, 80, 50);
-    triangle(200, 400, 450, 250, 300, 400);
+    triangle(pageWidth * 0.5, mountainBase, pageWidth * 0.75, mountainBase - 175, pageWidth * 0.875, mountainBase); // Adjusted x positions
 
-    // reduce sunHeight by 2 until it reaches 140 
+
+    // Sunrise Animation
     if (sunHeight > 130) {
         sunHeight -= 2;
-
-        // modify custom variables for sky color during sunrise
         if (sunHeight < 480) {
-            redVal += 4;
+            redVal += 2;
             greenVal += 1;
         }
-    }
-    if (mouseIsPressed === true && sunHeight === 130) {
-        background(0);
     }
 }
