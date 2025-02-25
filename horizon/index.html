@@ -1,26 +1,47 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Horizon</title>
-  <!-- Web Components -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.6.0/webcomponents-bundle.js"></script>  
-  <!-- Polymer Component -->
-  <script src="https://unpkg.com/@polymer/paper-checkbox@next/paper-checkbox.js?module" type="module" ></script>
   <!-- JQuery -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
   <!-- User defined -->
   <script src="./src/index.js" defer></script>
+  <script src="./src/canvas/p5-client.js" defer></script>
+
+  <!-- P5.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.js"></script>
+  <style>
+    #canvas-container {
+      display: flex;
+      /* Horizontally center content */
+      justify-content: center;      
+      /* Vertically center content */
+      align-items: center;
+      /* Make container full viewport height (adjust as needed) */
+      height: 100vh;      
+      border: 1px solid red;
+    }
+
+    #p5-canvas {
+      /* Prevents inline spacing issues */
+      display: block;      
+      border: 1px solid blue;
+    }
+  </style >
 </head>
 
 <body>
-  <paper-checkbox>I am a Polymer Component!</paper-checkbox>  
-  
-  <div id="box"></div>
-  <div id="test"></div>
-  <div id="hello"></div>
+  <div id="canvas-container"></div>
+  <div id="my-box"></div>
+  <div id="my-test"></div>
+  <div id="my-hello"></div>
   <div class="class-selector"></div>
   <div class="class-selector"></div>
   <div class="class-selector"></div>
-  <input type="button" value="Click Me" id="my-button"></input>
+  <input id="my-button" type="button" value="Click Me"></input>
+  <p></p>
 </body>
-</html> 
+
+</html>
