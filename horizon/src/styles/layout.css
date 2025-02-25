@@ -1,3 +1,7 @@
+body {
+    background-color: rgb(255, 183, 25);
+}
+
 #layout {
     position: absolute;
     top: 0px;
