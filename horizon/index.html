@@ -16,6 +16,7 @@
   <!-- User defined - General -->
   <script src="./src/index.js" defer></script>
   <link rel="stylesheet" href="./src/styles/layout.css">
+  
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,6 +33,9 @@
 
   <!-- Adobe Spectrum -->
   <script src="https://jspm.dev/@spectrum-web-components/bundle/elements.js" type="module" async></script>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
@@ -56,6 +60,7 @@
       </sp-action-menu>
     </sp-theme>
   </div>
+  <div class="grid grid-cols-3 gap-4" id="content"></div>
 </body>
 
 </html>

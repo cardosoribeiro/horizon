@@ -23,3 +23,10 @@ body {
     top: 50px;
     right: 20px;
 }
+
+#content {
+    position: relative;
+    padding: 20px;
+    font-size: 20;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
