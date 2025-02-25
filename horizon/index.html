@@ -1,92 +1,26 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>Simple Polymer Component (Vanilla JS)</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.6.0/webcomponents-bundle.js"></script>
-    <style>
-        /* Component Styles */
-        .container {
-            background-color: lightblue;
-            padding: 10px;
-            border: 1px solid gray;
-        }
-        .my-element {
-            background-color: red;
-            transition: background-color 10s ease; /* Transition for background color */
-        }
-
-        .my-element:hover {
-            background-color: blue; /* Target state on hover */
-        }        
-    </style>
+  <title>Horizon</title>
+  <!-- Web Components -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.6.0/webcomponents-bundle.js"></script>  
+  <!-- Polymer Component -->
+  <script src="https://unpkg.com/@polymer/paper-checkbox@next/paper-checkbox.js?module" type="module" ></script>
+  <!-- JQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <!-- User defined -->
+  <script src="./src/index.js" defer></script>
 </head>
 
 <body>
-
-    <script>
-        // Create the custom element
-        class MyComponent extends HTMLElement {
-            constructor() {
-                super(); // Call the parent constructor
-
-                // Create the shadow DOM
-                this.attachShadow({ mode: 'open' }); // 'open' means the shadow DOM is accessible from outside
-
-                // Create elements
-                const container = document.createElement('div');
-                container.classList.add('container');
-                const message = document.createElement('p');
-                message.textContent = "Hello from my custom element!";
-                const button = document.createElement('button');
-                button.textContent = "Click me";
-
-                // Add elements to the shadow DOM
-                container.appendChild(message);
-                container.appendChild(button);
-                this.shadowRoot.appendChild(container);
-
-                // Add event listener (inside the component)
-                button.addEventListener('click', () => {
-                    alert("Button clicked inside the component!");
-                    message.textContent = "Button clicked!"; // Change message text
-                });
-
-                // Get attribute value:
-                const myName = this.getAttribute('name');
-                if (myName) {
-                    const nameParagraph = document.createElement('p');
-                    nameParagraph.textContent = `My name is ${myName}`;
-                    container.appendChild(nameParagraph);
-                }
-
-            }
-
-            // Properties (example - setting a default value)
-            static get observedAttributes() {
-                return ['name']; // List of attributes to observe
-            }
-
-            attributeChangedCallback(name, oldValue, newValue) {
-                if (name === 'name') {
-                    const nameParagraph = this.shadowRoot.querySelector('p:nth-child(2)'); // Select the second <p> tag
-                    if (nameParagraph) {
-                        nameParagraph.textContent = `My name is ${newValue}`;
-                    }
-                }
-            }
-        }
-
-        // Define the custom element
-        customElements.define('my-component', MyComponent);
-    </script>
-
-
-    <my-component name="John Doe"></my-component>
-    <my-component></my-component>
-
-    <button class="my-element" style="width:100px;height:100px"></button>
-
+  <paper-checkbox>I am a Polymer Component!</paper-checkbox>  
+  
+  <div id="box"></div>
+  <div id="test"></div>
+  <div id="hello"></div>
+  <div class="class-selector"></div>
+  <div class="class-selector"></div>
+  <div class="class-selector"></div>
+  <input type="button" value="Click Me" id="my-button"></input>
 </body>
-
-</html>
+</html> 
