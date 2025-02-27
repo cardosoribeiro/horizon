@@ -1,0 +1,78 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    display: flex;
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-grow: 1;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #f0f0f0;
+    transition: width 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar.collapsed {
+    width: 60px;
+}
+
+.menu-toggle {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    padding: 10px;
+    cursor: pointer;
+    align-self: flex-start;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    flex-grow: 1;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.3s ease;
+}
+
+.menu-item:hover {
+    background-color: #e0e0e0;
+}
+
+.icon {
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+/* Corrected CSS for Collapsed State */
+.sidebar.collapsed .menu-item {
+    justify-content: center;
+    padding: 10px;
+}
+
+.sidebar.collapsed .menu-item span:last-child {
+    display: none;
+}
+
+.sidebar.collapsed .icon {
+    margin-right: 0;
+}
