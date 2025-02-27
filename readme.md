@@ -1,3 +1,3 @@
 # Wellcome to Horizon
 
-A next level browser app.
+A next level browser app.   

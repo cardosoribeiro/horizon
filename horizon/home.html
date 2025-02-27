@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spectrum + Tailwind Landing with Sidenav</title>
+  <script src="https://jspm.dev/@spectrum-web-components/bundle/elements.js" type="module" async></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom Tailwind overrides for Spectrum components */
+    sp-button {
+      @apply px-4 py-2 rounded-full font-semibold;
+    }
+    sp-menu-item {
+      @apply block px-4 py-2 text-gray-800 hover:bg-gray-100;
+    }
+    .main-content {
+      display: flex;
+    }
+    .content-area{
+        flex-grow:1;
+        padding: 2rem;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+
+  <sp-theme scale="medium" color="light">
+    <div class="container mx-auto p-4">
+
+      <header class="py-8">
+        <sp-top-nav>
+          <sp-top-nav-item href="#">My Product</sp-top-nav-item>
+          <sp-top-nav-item style="margin-inline-start: auto;" href="#" selected>Home</sp-top-nav-item>
+          <sp-top-nav-item href="#">Features</sp-top-nav-item>
+          <sp-top-nav-item href="#">Pricing</sp-top-nav-item>
+          <sp-top-nav-item href="#">Contact</sp-top-nav-item>
+        </sp-top-nav>
+      </header>
+
+      <div class="main-content">
+        <sp-sidenav collapsible>
+          <sp-sidenav-item href="#">Dashboard</sp-sidenav-item>
+          <sp-sidenav-item href="#">Users</sp-sidenav-item>
+          <sp-sidenav-item href="#">Settings</sp-sidenav-item>
+        </sp-sidenav>
+        <div class="content-area">
+
+          <section class="text-center py-16">
+            <sp-heading size="xxl" level="2" class="text-4xl md:text-5xl font-bold mb-4">
+              Unlock Your Potential
+            </sp-heading>
+            <br>
+            <sp-body size="l" class="text-gray-600 mb-8">
+              Discover the tools to streamline your workflow and achieve your goals.
+            </sp-body>
+            <br>
+            <sp-button variant="primary" size="xl">Get Started</sp-button>
+          </section>
+
+          <section class="grid grid-cols-1 md:grid-cols-3 gap-8 py-12">
+            <div class="p-6 bg-white rounded-lg shadow-md">
+              <sp-heading size="m" level="3" class="text-xl font-semibold mb-4">Feature 1</sp-heading>
+              <sp-body size="s" class="text-gray-700">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </sp-body>
+            </div>
+            <div class="p-6 bg-white rounded-lg shadow-md">
+              <sp-heading size="m" level="3" class="text-xl font-semibold mb-4">Feature 2</sp-heading>
+              <sp-body size="s" class="text-gray-700">
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </sp-body>
+            </div>
+            <div class="p-6 bg-white rounded-lg shadow-md">
+              <sp-heading size="m" level="3" class="text-xl font-semibold mb-4">Feature 3</sp-heading>
+              <sp-body size="s" class="text-gray-700">
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              </sp-body>
+            </div>
+          </section>
+
+          <footer class="text-center py-6 border-t border-gray-200">
+            <sp-body size="s" class="text-gray-500">
+              &copy; 2024 My Company. All rights reserved.
+            </sp-body>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </sp-theme>
+
+</body>
+</html>
