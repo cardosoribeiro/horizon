@@ -20,7 +20,7 @@ function updadeDocumentObjectModel() {
 }
 
 function loadContent() {
-    $("#content").html(myText);
+    //$("#content").html(myText);
 }
 
 
