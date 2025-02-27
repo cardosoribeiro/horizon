@@ -11,8 +11,8 @@ body {
 }
 
 .sidebar {
-    width: 500px;
-    background-color: #f0f0f0;
+    width: 1300px;
+    background-color: lightseagreen; /*#f0f0f0*/
     transition: width 0.3s ease;
     display: flex;
     flex-direction: column;
